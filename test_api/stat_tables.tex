@@ -1,0 +1,460 @@
+\documentclass[french, 11pt, a4paper, oldfontcommands]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[a4paper]{geometry}
+
+
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{rotating}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Glenn]{fncychap}
+\usepackage{pifont}
+\usepackage{multirow}
+ 
+% setting some parameters to use after in the document
+\graphicspath {{img/}}
+\usepackage{xcolor,colortbl}
+  
+\begin{document}
+
+\subsection{Exemple}
+	\begin{table}[ht]
+		\begin{tabular}{lllll}
+		\rowcolor[HTML]{9B9B9B} 
+			& Name              & Responsetime & Throughput & Documentation \\
+		ws1  & DictionaryService & 45           & 27.2       & 58            \\
+		\rowcolor[HTML]{EFEFEF} 
+		ws2  & MyService         & 71.75        & 14.6       & 86            \\
+		ws3  & aba               & 117          & 23.4       & 59            \\
+		\rowcolor[HTML]{EFEFEF} 
+		ws4  & AlexaWebSearch    & 70           & 5.4        & 91            \\
+		ws5  & ErrorMailer       & 105.2        & 18.2       & 91            \\
+		\rowcolor[HTML]{EFEFEF} 
+		ws6  & getJoke           & 224          & 24.6       & 88   
+		\end{tabular}
+		\caption {\small }
+		\label{tab:1}  
+	\end{table}
+	\par
+	\subsubsection{TOPSIS}
+		\textbf{Étape 1:} Normaliser les alternatives avec la formule de normalisation vectorielle :
+		\begin{table}[ht]
+			\begin{tabular}{llll}
+			\rowcolor[HTML]{9B9B9B} 
+			Service & Responsetime & Throughput & Documentation \\
+			w1      & 0.1526       & 0.5477     & 0.2954        \\
+			\rowcolor[HTML]{EFEFEF} 
+			w2      & 0.2432       & 0.2940     & 0.4380        \\
+			w3      & 0.3967       & 0.4712     & 0.3005        \\
+			\rowcolor[HTML]{EFEFEF} 
+			w4      & 0.2373       & 0.1087     & 0.4635        \\
+			w5      & 0.3567       & 0.3665     & 0.4635        \\
+			\rowcolor[HTML]{EFEFEF} 
+			w6      & 0.7594       & 0.4954     & 0.4482       
+			\end{tabular}
+		\end{table}
+		\par
+		\textbf{Étape 2:} Construire la matrice de décision normalisée pondérée :
+		\begin{table}[ht]
+			\begin{tabular}{llll}
+			\rowcolor[HTML]{9B9B9B} 
+			Service & Responsetime & Throughput & Documentation \\
+			w1      & 0.0305       & 0.2191     & 0.1182        \\
+			\rowcolor[HTML]{EFEFEF} 
+			w2      & 0.0486       & 0.1176     & 0.1752        \\
+			w3      & 0.0793       & 0.1885     & 0.1202        \\
+			\rowcolor[HTML]{EFEFEF} 
+			w4      & 0.0475       & 0.0435     & 0.1854        \\
+			w5      & 0.0713       & 0.1466     & 0.1854        \\
+			\rowcolor[HTML]{EFEFEF} 
+			w6      & 0.1519       & 0.1982     & 0.1793       
+			\end{tabular}
+		\end{table}
+        \par
+        \newpage
+		\textbf{Étape 3:} Déterminer la solution idéale positive $R^+$ et la solution idéale négative $R^-$ :
+		\begin{table}[ht]
+			\begin{tabular}{llll}
+			\rowcolor[HTML]{C0C0C0} 
+			$R^+$ & 0.0305 & 0.2191 & 0.1854 \\
+			\rowcolor[HTML]{EFEFEF} 
+			$R^-$ & 0.1519 & 0.0435 & 0.1182
+			\end{tabular}
+		\end{table}
+		\par
+		\textbf{Étape 4:} Calculer la distance euclidienne entre les solutions idéales $S^+$ et $S^-$ et les autres alternatives :
+		\begin{table}[ht]
+			\begin{tabular}{lll}
+			\rowcolor[HTML]{9B9B9B} 
+			Service & $S^+$  & $S^-$  \\
+			w1      & 0.0672 & 0.2135 \\
+			\rowcolor[HTML]{EFEFEF} 
+			w2      & 0.1036 & 0.1393 \\
+			w3      & 0.0870 & 0.1621 \\
+			\rowcolor[HTML]{EFEFEF} 
+			w4      & 0.1764 & 0.1242 \\
+			w5      & 0.0832 & 0.1471 \\
+			\rowcolor[HTML]{EFEFEF} 
+			w6      & 0.1233 & 0.1663
+			\end{tabular}
+		\end{table}
+		\par
+		\textbf{Étape 5:} Calculer la proximité à la valeur positive parmi les alternatives $C_i$ : 
+		\begin{table}[ht]
+			\begin{tabular}{ll}
+			\rowcolor[HTML]{9B9B9B} 
+			$C_i$  & Classement \\
+			0.7605 & 1          \\
+			0.5735 & 5          \\
+			\rowcolor[HTML]{EFEFEF} 
+			0.6508 & 2          \\
+			0.4131 & 6          \\
+			\rowcolor[HTML]{EFEFEF} 
+			0.6388 & 3          \\
+			0.5743 & 4         
+			\end{tabular}
+		\end{table}
+        \par
+    \newpage
+	\subsubsection{VIKOR}
+	\textbf{Étape 1:} Normaliser les alternatives avec la formule de normalisation MIN-MAX : \\
+	\begin{table}[ht]
+		\begin{tabular}{llll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & Responsetime & Throughput & Documentation \\
+	w1      & 1.0000       & 1.0000     & 0.0000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 0.8506       & 0.4220     & 0.8485        \\
+	w3      & 0.5978       & 0.8257     & 0.0303        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.8603       & 0.0000     & 1.0000        \\
+	w5      & 0.6637       & 0.5872     & 1.0000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.0000       & 0.8807     & 0.9091       
+		\end{tabular}
+	\end{table}
+	\par
+	\textbf{Étape 2:} Calculer les valeurs $S_i$ et $R_i$ en utilisant les relations suiventes : \\
+	\begin{table}[ht]
+		\begin{tabular}{lll}
+		\rowcolor[HTML]{9B9B9B} 
+		Service & $S_i$  & $R_i$  \\
+		w1      & 0.4000 & 0.4000 \\
+		\rowcolor[HTML]{EFEFEF} 
+		w2      & 0.5380 & 0.3390 \\
+		w3      & 0.4230 & 0.3300 \\
+		\rowcolor[HTML]{EFEFEF} 
+		w4      & 0.4280 & 0.4000 \\
+		w5      & 0.7020 & 0.4000 \\
+		\rowcolor[HTML]{EFEFEF} 
+		w6      & 0.9160 & 0.3640
+		\end{tabular}
+	\end{table}
+    \par
+	\textbf{Étape 3:} Déterminer les valeurs $S^*$, $S^*$, $R^*$ et $R^-$ définies par : \\
+	\begin{table}[ht]
+		\begin{tabular}{llll}
+		\rowcolor[HTML]{9B9B9B} 
+		$S^*$  & $S^*$  & $R^*$  & $R^-$  \\
+		\rowcolor[HTML]{EFEFEF} 
+		0.4000 & 0.9160 & 0.3300 & 0.4000
+		\end{tabular}
+	\end{table}
+	\par
+	\textbf{Étape 4:}  Calculer la valeur $Q_i$, $i = 1..m$ avec la relation : \\
+	\begin{table}[ht]
+		\begin{tabular}{lllll}
+		\rowcolor[HTML]{9B9B9B} 
+		Service & $S_i$  & $R_i$  & $Q_i$  & Classement \\
+		w1      & 0.4000 & 0.4000 & 0.5000 & 4          \\
+		\rowcolor[HTML]{EFEFEF} 
+		w2      & 0.5380 & 0.3390 & 0.1980 & 5          \\
+		w3      & 0.4230 & 0.3300 & 0.0220 & 6          \\
+		\rowcolor[HTML]{EFEFEF} 
+		w4      & 0.4280 & 0.4000 & 0.5270 & 3          \\
+		w5      & 0.7020 & 0.4000 & 0.7930 & 1          \\
+		\rowcolor[HTML]{EFEFEF} 
+		w6      & 0.9160 & 0.3640 & 0.7430 & 2         
+		\end{tabular}
+	\end{table}
+    \par
+    \newpage
+	\subsubsection{SAW}
+	\textbf{Étape 1:} Normaliser les alternatives avec la formule de normalisation MIN-MAX (voir \textbf{Étape 1} de VIKOR). \\
+	\par 
+	\textbf{Étape 2:} Calculer les scores individuels des alternatives  $S_i$:
+	\begin{table}[ht]
+		\begin{tabular}{ll}
+		\rowcolor[HTML]{9B9B9B} 
+		$S_i$  & Classement \\
+		0.6000 & 4          \\
+		0.6780 & 3          \\
+		\rowcolor[HTML]{EFEFEF} 
+		0.4620 & 6          \\
+		0.5720 & 5          \\
+		\rowcolor[HTML]{EFEFEF} 
+		0.7680 & 1          \\
+		0.7160 & 2         
+		\end{tabular}
+	\end{table}
+	\par
+	\textbf{Étape 3:}  Classer les alternatives par ordre décroissant des valeurs $S_i$.
+	\subsubsection{WPM}
+	\par
+	\textbf{Étape 1:} Normaliser les alternatives avec la formule de normalisation MIN-MAX (voir \textbf{Étape 1} de VIKOR).
+	\par
+	\textbf{Étape 2:} Calculer les scores des alternatives individuelles $S_i$:
+	\begin{table}[ht]
+		\begin{tabular}{ll}
+		\rowcolor[HTML]{9B9B9B} 
+		$S_i$  & Classement \\
+		0.0000 & 4          \\
+		0.6420 & 2          \\
+		\rowcolor[HTML]{EFEFEF} 
+		0.2064 & 3          \\
+		0.0000 & 4          \\
+		\rowcolor[HTML]{EFEFEF} 
+		0.7446 & 1          \\
+		0.0000 & 4         
+		\end{tabular}
+	\end{table}
+	\par
+	\textbf{Étape 3:}  Classer les alternatives par ordre décroissant des valeurs $S_i$.
+	\par
+\subsection{Exemple}
+	\subsubsection{RIM}
+	\textbf{Etape 1:} Normaliser la matrice $D$ en utiliant la normalisation RIM.
+	\begin{table}[ht]
+		\begin{tabular}{llll}
+		\rowcolor[HTML]{9B9B9B} 
+		Service & Responsetime & Throughput & Documentation \\
+		w1      & 1.4435       & 0.0000     & 1.0000        \\
+		\rowcolor[HTML]{EFEFEF} 
+		w2      & 1.0000       & 1.0000     & 1.0000        \\
+		w3      & 0.8629       & 1.0000     & 1.0000        \\
+		\rowcolor[HTML]{EFEFEF} 
+		w4      & 1.0000       & 9.9091     & 1.0000        \\
+		w5      & 0.9581       & 1.0000     & 1.0000        \\
+		\rowcolor[HTML]{EFEFEF} 
+		w6      & 0.0000       & 1.0000     & 1.0000       
+		\end{tabular}
+	\end{table}
+	
+	\textbf{Etape 2:} Construire la matrice de décision normalisée pondérée
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{llll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & Responsetime & Throughput & Documentation \\
+	w1      & 0.2887       & 0.0000     & 0.4000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 0.2000       & 0.4000     & 0.4000        \\
+	w3      & 0.1726       & 0.4000     & 0.4000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.2000       & 3.9636     & 0.4000        \\
+	w5      & 0.1916       & 0.4000     & 0.4000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.0000       & 0.4000     & 0.4000       
+	\end{tabular}
+	\end{table}
+	
+	\textbf{Etape 3:} Calculer la distance euclédienne des solutions idéales positive et négative
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{lll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & $S_i$  & $R_i$  \\
+	w1      & 1.3660 & 0.4933 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 1.1662 & 0.6000 \\
+	w3      & 1.1852 & 0.5914 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 3.1278 & 3.9888 \\
+	w5      & 1.1720 & 0.5973 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 1.3115 & 0.5657
+	\end{tabular}
+	\end{table}
+	
+	\textbf{Etape 4:} Comme dans TOPSIS, on calcule les coefficient $C_{i}$ ,\textit{$i = 1,2,..,m$  }:
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{lll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & $C_i$  & Classement \\
+	w1      & 0.2653 & 6          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 0.3397 & 2          \\
+	w3      & 0.3329 & 4          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.5605 & 1          \\
+	w5      & 0.3376 & 3          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.3013 & 5         
+	\end{tabular}
+	\end{table}
+	\newpage
+	\subsubsection{TOPSIS*}
+	\textbf{Etape 1:} Normaliser la matrice $D$ en utiliant la normalisation RIM.
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{llll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & Responsetime & Throughput & Documentation \\
+	w1      & 0.9597       & 0.6667     & 1.0000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 1.0000       & 1.0000     & 1.0000        \\
+	w3      & 0.8629       & 1.0000     & 1.0000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 1.0000       & 0.0000     & 0.0000        \\
+	w5      & 0.9581       & 1.0000     & 0.0000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.0000       & 1.0000     & 1.0000       
+	\end{tabular}
+	\end{table}
+
+	\textbf{Etape 2:} Construire la matrice de décision normalisée pondérée
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{llll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & Responsetime & Throughput & Documentation \\
+	w1      & 0.1919       & 0.2667     & 0.4000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 0.2000       & 0.4000     & 0.4000        \\
+	w3      & 0.1726       & 0.4000     & 0.4000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.2000       & 0.0000     & 0.0000        \\
+	w5      & 0.1916       & 0.4000     & 0.0000        \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.0000       & 0.4000     & 0.4000       
+	\end{tabular}
+	\end{table}
+
+	\textbf{Etape 3:} Calculer la distance euclédienne des solutions idéales positive et négative
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{lll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & $S_i$  & $R_i$  \\
+	w1      & 1.2453 & 0.5176 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 1.1662 & 0.6000 \\
+	w3      & 1.1852 & 0.5914 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 1.6248 & 0.2000 \\
+	w5      & 1.4190 & 0.4435 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 1.3115 & 0.5657
+	\end{tabular}
+	\end{table}
+
+	\textbf{Etape 4:} Comme dans TOPSIS, on calcule les coefficient $C_{i}$ ,\textit{$i = 1,2,..,m$  }:
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{lll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & $Q_i$  & Classement \\
+	w1      & 0.2936 & 4          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 0.3397 & 1          \\
+	w3      & 0.3329 & 2          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.1096 & 6          \\
+	w5      & 0.2381 & 5          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.3013 & 3         
+	\end{tabular}
+	\end{table}
+	\newpage
+	\subsubsection{VIKOR*}
+	\textbf{Etape 1:} Normaliser la matrice $D$ en utiliant la normalisation RIM.
+	
+	\textbf{Etape 2:} Calculer les valeursSietRien utilisant les relations suiventes
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{lll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & $S_i$  & $R_i$  \\
+	w1      & 0.8586 & 0.4000 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 1.0000 & 0.4000 \\
+	w3      & 0.9726 & 0.4000 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.2000 & 0.2000 \\
+	w5      & 0.5916 & 0.4000 \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.8000 & 0.4000
+	\end{tabular}
+	\end{table}
+	\textbf{Étape 3:} Déterminer les valeurs $S^*$, $S^*$, $R^*$ et $R^-$ définies par : \\
+	% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{llll}
+	\rowcolor[HTML]{9B9B9B} 
+	$S^*$  & $S^-$  & $R^*$  & $R^-$  \\
+	0.2000 & 1.0000 & 0.2000 & 0.4000
+	\end{tabular}
+	\end{table}
+
+	\textbf{Etape 4:} Comme dans TOPSIS, on calcule les coefficient $C_{i}$ ,\textit{$i = 1,2,..,m$  }:
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+	\begin{tabular}{lllll}
+	\rowcolor[HTML]{9B9B9B} 
+	Service & $S_i$  & $R_i$  & $Q_i$  & Classement \\
+	w1      & 0.8586 & 0.4000 & 0.9120 & 3          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w2      & 1.0000 & 0.4000 & 1.0000 & 1          \\
+	w3      & 0.9726 & 0.4000 & 0.9830 & 2          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w4      & 0.2000 & 0.2000 & 0.0000 & 6          \\
+	w5      & 0.5916 & 0.4000 & 0.7450 & 5          \\
+	\rowcolor[HTML]{EFEFEF} 
+	w6      & 0.8000 & 0.4000 & 0.8750 & 4         
+	\end{tabular}
+	\end{table}
+\section{Exemple}
+	\subsubsection{}
+{\huge il faut donner un example et le dérouler pour toutes les approches}
+\subsection{Ideal TOPSIS}
+	\par 
+	\textbf{Etape 1 :}  Normaliser les alternatives avec la formule de normalisation vectorielle.
+	\textbf{Étape 2:} multiplier la matrice de déscion normalisée pondérée par la matrice des degrés de satisfaction  $f_{ij}$.
+	\textbf{Étape 3:} Calculer les solutions ideales positive et négative, notées respectivement, $R^+$ et $R^-$, comme suit:
+	\textbf{Étape 4:}  Calculer la distance euclidienne entre les solutions idéales $R^+$ et $R^-$ et les autres alternatives:
+	\textbf{Étape 5:} Calculer la proximité à la valeur positive parmi les alternatives, noté $C_i$, après avoir considérer la nature des contraintes : 
+	\textbf{Étape 6:} Classer les alternatives selon les valeurs $C_i$.
+
+\subsection{Ideal VIKOR}
+	\textbf{Étape 1:} Normaliser les alternatives avec la formule de normalisation MIN-MAX.
+	\textbf{Étape 2:} Calculer les valeurs $S_i$ et $R_i$ en utilisant les relations suivantes:
+	\textbf{Étape 3:} Déterminer les valeurs $S^*$, $S^*$, $R^*$ et $R^-$ définissent par: .
+	\textbf{Étape 4:}  Calculer la valeur $Q_i$, $i = 1..I$ avec la relation:
+	\textbf{Étape 5:}  Classer les alternatives par ordre décroissant des valeurs $Q_i$
+\end{document}
